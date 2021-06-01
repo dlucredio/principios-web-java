@@ -13,5 +13,9 @@ Para conseguir rodar os [exemplos](exemplos) deste curso, são necessárias as s
     - [Eclipse](https://www.eclipse.org/)
     - [Apache NetBeans](https://netbeans.apache.org/)
 - [Spring Boot CLI](https://docs.spring.io/spring-boot/docs/current/reference/html/cli.html) (opcional)
+- Um SGBD. Recomendado:
+    - [Apache Derby](http://db.apache.org/derby/)
+        - Basta descompactar e executar. É preciso ter a variável JAVA_HOME configurada:
+            - No MacOS: ```export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home```
 
 Esse [vídeo aqui](https://youtu.be/23rN0oDdOKg) explica de um jeito bem fácil como configurar um ambiente como o que vamos precisar.
