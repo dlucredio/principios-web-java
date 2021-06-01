@@ -154,7 +154,7 @@ palpiteiro integer references Usuario (id)
 ```
 - Crie a pasta ```src/main/java/br/ufscar/dc/latosensu/web/bolao1```
 
-7. Criar os Value Objects (pacote ```br.ufscar.dc.latosensu.web.bolao1.beans```)
+7. Criar os Value Objects
 
 - ```src/main/java/br/ufscar/dc/latosensu/web/bolao1/beans/Usuario.java```
 
@@ -239,7 +239,7 @@ public class Palpite {
 }
 ```
 
-8. Criar os Data Access Objects (pacote ```br.ufscar.dc.latosensu.web.bolao1.dao```)
+8. Criar os Data Access Objects
 
 - ```src/main/java/br/ufscar/dc/latosensu/web/bolao1/dao/UsuarioDAO.java```
 
@@ -503,7 +503,7 @@ ul.erro { color: red; }
 
 14. Criar o bean do formulário
 
-- Arquivo ```src/main/java/br/ufscar/dc/latosensu/web/bolao1/forms```:
+- Arquivo ```src/main/java/br/ufscar/dc/latosensu/web/bolao1/forms/NovoPalpiteFormBean.java```:
 
 ```java
 package br.ufscar.dc.latosensu.web.bolao1.forms;
@@ -675,7 +675,7 @@ public class NovoPalpiteServlet extends HttpServlet {
 </html>
 ```
 
-19. Mostrar rodando. Testar a opção ```Modificar``` e mostrar que não aparecem os campos
+19. Mostrar rodando. Testar a opção "Modificar" e mostrar que não aparecem os campos
 20. Para mostrar, alterar ```palpiteForm.jsp```
 
 ```jsp
@@ -698,7 +698,7 @@ public class NovoPalpiteServlet extends HttpServlet {
 ...
 ```
 
-22. Testar novamente e mostrar que ao clicar em “Modificar”, os campos agora aparecem preenchidos. E também, ao abrir a aplicação em ```index.jsp```, os campos não são preenchidos com o último palpite.
+22. Testar novamente e mostrar que ao clicar em "Modificar", os campos agora aparecem preenchidos. E também, ao abrir a aplicação em ```index.jsp```, os campos não são preenchidos com o último palpite.
 23. Agora vamos fazer a validação
 24. Modificar a classe ```NovoPalpiteFormBean```, incluindo um método de validação
 
