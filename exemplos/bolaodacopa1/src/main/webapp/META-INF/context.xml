@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/BolaoDaCopa1">
+  <ResourceLink global="jdbc/bolao1" name="jdbc/bolao1local" type="javax.sql.DataSource"/>
+</Context>

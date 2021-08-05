@@ -1,0 +1,8 @@
+/Users/daniellucredio/Desktop/exemplos/bolaodacopa1/src/main/java/br/ufscar/dc/latosensu/web/bolao1/forms/NovoPalpiteFormBean.java
+/Users/daniellucredio/Desktop/exemplos/bolaodacopa1/src/main/java/br/ufscar/dc/latosensu/web/bolao1/dao/UsuarioDAO.java
+/Users/daniellucredio/Desktop/exemplos/bolaodacopa1/src/main/java/br/ufscar/dc/latosensu/web/bolao1/beans/Usuario.java
+/Users/daniellucredio/Desktop/exemplos/bolaodacopa1/src/main/java/br/ufscar/dc/latosensu/web/bolao1/beans/Palpite.java
+/Users/daniellucredio/Desktop/exemplos/bolaodacopa1/src/main/java/br/ufscar/dc/latosensu/web/bolao1/servlets/GravarPalpiteServlet.java
+/Users/daniellucredio/Desktop/exemplos/bolaodacopa1/src/main/java/br/ufscar/dc/latosensu/web/bolao1/servlets/VerPalpitesServlet.java
+/Users/daniellucredio/Desktop/exemplos/bolaodacopa1/src/main/java/br/ufscar/dc/latosensu/web/bolao1/servlets/NovoPalpiteServlet.java
+/Users/daniellucredio/Desktop/exemplos/bolaodacopa1/src/main/java/br/ufscar/dc/latosensu/web/bolao1/dao/PalpiteDAO.java
