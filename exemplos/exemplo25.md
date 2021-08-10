@@ -348,7 +348,7 @@ body.text-center {
 
 7. Vamos começar criando um cadastro de usuários e login
 
-8. Criar o arquivo `src/main/resources/templates/index.html` (exemplo adaptado do [site do bootstrap](https://getbootstrap.com/docs/5.1/examples/sign-in/)):
+8. Criar o arquivo `src/main/resources/templates/login.html` (exemplo adaptado do [site do bootstrap](https://getbootstrap.com/docs/5.1/examples/sign-in/)):
 
 ```html
 <!doctype html>
@@ -1395,10 +1395,10 @@ public class NovoPalpite {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="p: ${todosPalpites}"></tr>
-                    <td>[[${p.palpiteiro.nome}]]</td>
-                    <td>[[${p.campeao}]]</td>
-                    <td>[[${p.vice}]]</td>
+                    <tr th:each="p: ${todosPalpites}">
+                        <td>[[${p.palpiteiro.nome}]]</td>
+                        <td>[[${p.campeao}]]</td>
+                        <td>[[${p.vice}]]</td>
                     </tr>
                 </tbody>
             </table>
