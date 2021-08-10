@@ -1034,7 +1034,7 @@ public class PalpiteControlador {
 ``` 
 
 33. Testar e ver que funciona
-34. Agora vamos adicionar um tratamento de erro. Copiar o arquivo `erro.jsp` da [Demonstração 17](exemplo17.md) para a pasta `src/main/resources/templates/erro.html`, modificando para suprimir a mensagem
+34. Agora vamos adicionar um tratamento de erro. Copiar o arquivo `erro.jsp` da [Demonstração 17](exemplo17.md) para a pasta `src/main/resources/templates/error.html`, modificando para suprimir a mensagem
 
 ```diff
 -<%@page contentType="text/html" pageEncoding="UTF-8"%>

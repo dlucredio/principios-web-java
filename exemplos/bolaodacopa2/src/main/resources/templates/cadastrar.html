@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Bolão da copa</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/estilo.css}" rel="stylesheet">
+</head>
+
+<body class="text-center">
+
+    <main class="form-novousuario">
+        <form action="#" th:action="@{/usuario/gravar}" th:object="${novoUsuario}" method="post">
+            <img class="mb-4" th:src="@{/imagens/logo.png}" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 fw-normal">Bolão da copa - novo usuário</h1>
+
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+            <div class="form-floating">
+                <input type="text" th:field="*{nome}" th:class="form-control" th:classAppend="${#fields.hasErrors('nome')?'is-invalid':''}" id="floatingInput" placeholder="Fulano da silva">
+                <label for="floatingInput">Nome</label>
+            </div>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></div>
+            <div class="form-floating">
+                <input type="text" th:field="*{telefone}" class="form-control" th:classAppend="${#fields.hasErrors('telefone')?'is-invalid':''}" id="floatingInput" placeholder="(xx) xxxxx-xxxx">
+                <label for="floatingInput">Telefone</label>
+            </div>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('dataDeNascimento')}" th:errors="*{dataDeNascimento}"></div>
+            <div class="form-floating">
+                <input type="text" th:field="*{dataDeNascimento}" class="form-control" th:classAppend="${#fields.hasErrors('dataDeNascimento')?'is-invalid':''}" id="floatingInput" placeholder="31/10/1980">
+                <label for="floatingInput">Data de nascimento</label>
+            </div>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            <div class="form-floating">
+                <input type="email" th:field="*{email}" class="form-control" th:classAppend="${#fields.hasErrors('email')?'is-invalid':''}" id="floatingInput" placeholder="nome@exemplo.com">
+                <label for="floatingInput">Email</label>
+            </div>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></div>
+            <div class="form-floating">
+                <input type="password" th:field="*{senha}" class="form-control" th:classAppend="${#fields.hasErrors('senha')?'is-invalid':''}" id="floatingPassword" placeholder="Digite uma senha">
+                <label for="floatingPassword">Senha</label>
+            </div>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('confirmarSenha')}" th:errors="*{confirmarSenha}"></div>
+            <div class="form-floating">
+                <input type="password" th:field="*{confirmarSenha}" class="form-control" th:classAppend="${#fields.hasErrors('confirmarSenha')?'is-invalid':''}" id="floatingPassword" placeholder="Confirme a senha">
+                <label for="floatingPassword">Confirmação da senha</label>
+            </div>
+
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Registrar</button>
+        </form>
+    </main>
+</body>
+
+</html>
