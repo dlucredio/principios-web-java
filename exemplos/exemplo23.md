@@ -167,6 +167,7 @@ public class ProdutoController {
         return new ProdutoForm();
     }
    
+    // antes de criar o método a seguir, ir para o passo 8
     @PostMapping(path = "/cadastrarProduto")
     public String cadastrarProduto(@Valid ProdutoForm produtoForm, BindingResult result, RedirectAttributes attr) {
         if(result.hasErrors()) {
@@ -180,7 +181,50 @@ public class ProdutoController {
 }
 ```
 
-8. Criar uma página `src/main/resources/templates/produto.html`:
+8. Vai ser necessária uma classe `br.ufscar.dc.latosensu.web.demospringweb.ProdutoForm`:
+
+```java
+package br.ufscaar.dc.latosensu.web.demospringweb;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+public class ProdutoForm {
+    @NotBlank
+    private String id;
+
+    @Size(min = 5, max=10)
+    private String nome;
+    
+    private String categoria;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }   
+}
+```
+
+9. Criar uma página `src/main/resources/templates/produto.html`:
 
 ```html
 <!DOCTYPE HTML>
@@ -236,7 +280,7 @@ public class ProdutoController {
 </html>
 ```
 
-9. Criar uma página `src/main/resources/static/sucesso.html`:
+10. Criar uma página `src/main/resources/static/sucesso.html`:
 
 ```html
 <!DOCTYPE html>
@@ -253,5 +297,5 @@ public class ProdutoController {
 </html>
 ```
 
-10. Testar (no final, reparar que o nome do produto foi repassado junto com o redirect)
-11. Fim
+11. Testar (no final, reparar que o nome do produto foi repassado junto com o redirect)
+12. Fim

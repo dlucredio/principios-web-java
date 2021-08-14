@@ -243,9 +243,9 @@ public class UsuarioDAO {
 +    @Autowired
     DataSource dataSource;
 
-    public UsuarioDAO(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+-    public UsuarioDAO(DataSource dataSource) {
+-        this.dataSource = dataSource;
+-    }
     
     public Usuario gravarUsuario(Usuario u) throws SQLException, NamingException {
         try (Connection con = dataSource.getConnection();
@@ -329,9 +329,9 @@ public class PalpiteDAO {
 +    @Autowired
     DataSource dataSource;
 
-    public PalpiteDAO(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+-    public PalpiteDAO(DataSource dataSource) {
+-        this.dataSource = dataSource;
+-    }
 
     public Palpite gravarPalpite(Palpite p) throws SQLException, NamingException {
         try (Connection con = dataSource.getConnection();

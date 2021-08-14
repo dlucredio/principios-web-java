@@ -155,12 +155,12 @@ title.text = こんにちは世界
 </head>
 
 <body>
-    <div style="right: 40px; position: absolute">
++    <div style="right: 40px; position: absolute">
 +        <a th:href="@{''(lang=pt_BR)}"><img alt="" th:src="@{/flags/Brasil.gif}" style="width: 50px;" /></a>
 +        <a th:href="@{''(lang=en)}"><img alt="" th:src="@{/flags/EUA.gif}" style="width: 50px;" /></a>
 +        <a th:href="@{''(lang=fr)}"><img alt="" th:src="@{/flags/Franca.gif}" style="width: 50px;" /></a>
-+        <a th:href="@{'ß'(lang=ja)}"><img alt="" th:src="@{/flags/Japao.gif}" style="width: 50px;" /></a>
-    </div>
++        <a th:href="@{''(lang=ja)}"><img alt="" th:src="@{/flags/Japao.gif}" style="width: 50px;" /></a>
++    </div>
     <h1 th:text="#{welcome.text}">Alô Mundo</h1>
 
     <h4><span th:text="${dateString}">16 Março 2020</span></h4>
