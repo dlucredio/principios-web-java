@@ -88,8 +88,8 @@ private void tratarRequisicao(BufferedReader input, DataOutputStream output) thr
 +                resposta += "</html>";
 +                output.writeBytes(resposta);
 +            } else {
-+                // Continua a partir da linha a seguir, sem modificar
-                System.out.println("Requisição: " + arquivo);
++                // Continua a partir da linha a seguir, sem modificar 
+                File f = new File(PASTA_WWW + File.separator + arquivo);
                 ...
 +            }
      ...
