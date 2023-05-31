@@ -104,3 +104,7 @@ mvn compile war:war
 ```
 
 8. Será gerado o arquivo ```AplicacaoAloMundoMaven.war``` na pasta ```target```.
+9. Para executar, instale no VS Code a extensão "Community Server Connectors", da RedHat
+10. Irá aparecer uma nova aba "Servers" no VS Code
+11. Dentro dessa aba, selecione "Create new server", e escolha a opção para fazer download de um novo server.
+12. A partir deste momento, para fazer deploy/redeploy, basta clicar com o botão direito no arquivo ".war" gerado e escolher "Run on Server"
