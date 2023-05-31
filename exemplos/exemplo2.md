@@ -48,7 +48,7 @@ Exemplo verificado no seguinte ambiente:
 3. Abrir no browser, e simular um cadastro. Mostrar a janela do servidor, o que foi enviado
 4. Modificar o código do servidor, para tratar a requisição, e testar novamente
 
-```java
+```diff
 private void tratarRequisicao(BufferedReader input, DataOutputStream output) throws Exception {
   String tmp = input.readLine();
   if (tmp.startsWith("GET")) {
@@ -56,40 +56,42 @@ private void tratarRequisicao(BufferedReader input, DataOutputStream output) thr
      st.nextToken();
      String arquivo = st.nextToken().substring(1);
      System.out.println("Requisição: " + arquivo);
-            if (arquivo.startsWith("executar")) {
-                String email = "";
-                String conteudoForm = arquivo.substring(9);
-                StringTokenizer st2 = new StringTokenizer(conteudoForm, "&");
-                while (st2.hasMoreTokens()) {
-                    String s = st2.nextToken();
-                    int i = s.indexOf('=');
-                    String nomeParam = s.substring(0, i);
-                    String valorParam = s.substring(i + 1);
-                    if (nomeParam.equals("email")) {
-                        email = valorParam;
-                    }
-                    System.out.println("INSERT INTO TABELA " + nomeParam + " = " + valorParam);
-                }
-                String resposta = "HTTP/1.0 200 OK\r\n";
-                resposta += "Connection: close\r\n";
-                resposta += "Server: Exemplo\r\n";
-                resposta += "Content-Type: text/html\r\n";
-                resposta += "\r\n";
-                resposta += "<html>";
-                resposta += "    <head>";
-                resposta += "      <title>Este é o título da página</title>";
-                resposta += "      <meta charset=\"UTF-8\">";
-                resposta += "    </head>";
-                resposta += "    <body>";
-                resposta += "        <h1>Cadastro</h1>";
-                resposta += "        <hr>";
-                resposta += "        <p>Cadastro do e-mail " + email + " bem-sucedido!</p>";
-                resposta += "    </body>";
-                resposta += "</html>";
-                output.writeBytes(resposta);
-            } else {
-                // Continua a partir da linha a seguir, sem modificar
++            if (arquivo.startsWith("executar")) {
++                String email = "";
++                String conteudoForm = arquivo.substring(9);
++                StringTokenizer st2 = new StringTokenizer(conteudoForm, "&");
++                while (st2.hasMoreTokens()) {
++                    String s = st2.nextToken();
++                    int i = s.indexOf('=');
++                    String nomeParam = s.substring(0, i);
++                    String valorParam = s.substring(i + 1);
++                    if (nomeParam.equals("email")) {
++                        email = valorParam;
++                    }
++                    System.out.println("INSERT INTO TABELA " + nomeParam + " = " + valorParam);
++                }
++                String resposta = "HTTP/1.0 200 OK\r\n";
++                resposta += "Connection: close\r\n";
++                resposta += "Server: Exemplo\r\n";
++                resposta += "Content-Type: text/html\r\n";
++                resposta += "\r\n";
++                resposta += "<html>";
++                resposta += "    <head>";
++                resposta += "      <title>Este é o título da página</title>";
++                resposta += "      <meta charset=\"UTF-8\">";
++                resposta += "    </head>";
++                resposta += "    <body>";
++                resposta += "        <h1>Cadastro</h1>";
++                resposta += "        <hr>";
++                resposta += "        <p>Cadastro do e-mail " + email + " bem-sucedido!</p>";
++                resposta += "    </body>";
++                resposta += "</html>";
++                output.writeBytes(resposta);
++            } else {
++                // Continua a partir da linha a seguir, sem modificar
                 System.out.println("Requisição: " + arquivo);
+                ...
++            }
      ...
 ```
 
