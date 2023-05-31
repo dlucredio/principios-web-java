@@ -67,7 +67,7 @@ public class AloMundoServlet extends HttpServlet {
 
 5. Testar
 6. Depois de ver o JSP no browser, abrir o servlet gerado para ele, na pasta ```work``` do Tomcat, e comparar com o servlet feito à mão
-- Obs: olhar nas propriedades do servidor, o caminho para o Catalina base. Ou abrir o arquivo de configuração do Tomcat e ver onde ele está, para descobrir onde é o Catalina base
+- Obs: olhar nas propriedades do servidor, o caminho para o Catalina base. Ou abrir o arquivo de configuração do Tomcat e ver onde ele está, para descobrir onde é o Catalina base. Ou, caso esteja usando a extensão "Community Server" do VS Code, olhar na janela "Output" o caminho onde foi feita a implantação.
 7. Adicionar um código no servlet, para fazer um for de 1 a 10
 
 ```java
