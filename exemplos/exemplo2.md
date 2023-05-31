@@ -109,29 +109,29 @@ private void tratarRequisicao(BufferedReader input, DataOutputStream output) thr
 6. Mudar o método do formulário para ```POST``` (no arquivo ```teste.html```) e testar
 7. Modificar o servidor GatoTom para tratar requisições ```POST```
 
-```java
+```diff
     private void tratarRequisicao(BufferedReader input, DataOutputStream output) throws Exception {
         String tmp = input.readLine();
-        if (tmp != null && tmp.startsWith("POST")) {
-            int tamanho = 0;
-            while (true) {
-                System.out.println(tmp);
-                tmp = input.readLine();
-                // if(tmp.startsWith("Content-Length:")) {
-                //     tamanho = Integer.parseInt(tmp.substring(16));
-                // }
-                if (tmp.trim().isEmpty()) {
-                    //    System.out.println("Início conteúdo POST ("+tamanho+" bytes):");
-                    //    for(int i=0;i<tamanho;i++) {
-                    //        int b = input.read();
-                    //        System.out.print((char) b);
-                    //    }
-                    //    System.out.println("\nFim conteúdo POST");
-                    return;
-                }
-            }
-        }
-        else if (tmp != null && tmp.startsWith("GET")) {
++        if (tmp != null && tmp.startsWith("POST")) {
++            int tamanho = 0;
++            while (true) {
++                System.out.println(tmp);
++                tmp = input.readLine();
++                // if(tmp.startsWith("Content-Length:")) {
++                //     tamanho = Integer.parseInt(tmp.substring(16));
++                // }
++                if (tmp.trim().isEmpty()) {
++                    //    System.out.println("Início conteúdo POST ("+tamanho+" bytes):");
++                    //    for(int i=0;i<tamanho;i++) {
++                    //        int b = input.read();
++                    //        System.out.print((char) b);
++                    //    }
++                    //    System.out.println("\nFim conteúdo POST");
++                    return;
++                }
++            }
++        }
++        else if (tmp != null && tmp.startsWith("GET")) {
         ...
 ```
 
