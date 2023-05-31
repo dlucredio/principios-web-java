@@ -10,8 +10,8 @@ Este exemplo introduz a injeção de dependência no Spring MVC
 Exemplo verificado no seguinte ambiente:
 
 - Visual Studio Code - 1.56.2
-- openjdk version "16.0.1" 2021-04-20
-- Apache Maven 3.6.3
+- openjdk version "20.0.1"
+- Apache Maven 3.8.5
 
 <hr>
 
@@ -21,7 +21,7 @@ Exemplo verificado no seguinte ambiente:
 	
 	- **Language:** Java
 	
-	- **Spring Boot:** 2.5.3
+	- **Spring Boot:** 3.1.0
 	
 	- **Group:** br.ufscar.dc.latosensu.web
 	
@@ -31,11 +31,11 @@ Exemplo verificado no seguinte ambiente:
 	
 	- **Description:** Demo SpringWeb
 	
-	- **Package name:** br.ufscar.dc.latosensu.web
+	- **Package name:** br.ufscar.dc.latosensu.web.demospringweb
 	
 	- **Packaging:** Jar
 	
-	- **Java:** 16
+	- **Java:** 20
 	
 	  **Dependências:** Spring Web, Thymeleaf e Spring Boot DevTools
 
