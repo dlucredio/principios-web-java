@@ -26,12 +26,13 @@ Exemplo verificado no seguinte ambiente:
       
       ```sh
       $env:JAVA_HOME="C:\<caminho_para_java>\jreXXX"
+      $env:CATALINA_HOME="C:\<caminho_para_tomcat>\apache-tomcat-10.1.9"
       ```
-      - Executar ```startup.bat```
+      - Executar ```startup.bat``` para iniciar e ```shutdown.bat``` para encerrar
    - No Linux/Mac
       - Abrir um terminal
       - Rodar ```echo $JAVA_HOME``` ou ```export JAVA_HOME="/<caminho_para_java>/jreXXX"```
-      - Executar ```startup.sh``` (pode ser necessário dar permissão antes)
+      - Executar ```startup.sh``` para iniciar e ```shutdown.sh``` para encerrar (pode ser necessário dar permissão antes)
 7. Abrir localhost:8080
    - Mostrar que não tem acesso no manager
    - Modificar ```tomcat-users.xml```, adicionando a seguinte linha
