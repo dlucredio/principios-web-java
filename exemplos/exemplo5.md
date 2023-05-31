@@ -103,4 +103,4 @@ public class AloMundoServlet extends HttpServlet {
 mvn compile war:war
 ```
 
-8. Será gerado o arquivo ```AplicacaoAloMundoMaven.war``` na pasta ```target```. Clique com o botão direito e escolha ```Run on Tomcat Server```
+8. Será gerado o arquivo ```AplicacaoAloMundoMaven.war``` na pasta ```target```.
