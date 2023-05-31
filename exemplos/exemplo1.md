@@ -26,7 +26,7 @@ Host: dlucredio.com
 2. Criar um novo projeto Java no Apache Maven, chamado ```GatoTom```
 
 ```sh
-mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4
+mvn archetype:generate "-DarchetypeGroupId=org.apache.maven.archetypes" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DarchetypeVersion=1.4"
 
 Define value for property 'groupId': br.ufscar.dc.latosensu.web
 Define value for property 'artifactId': GatoTom
