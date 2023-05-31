@@ -105,7 +105,7 @@ public class AlomundoController {
 
 **Obs: Assegure-se que esses arquivos são salvos no formato UTF-8**
 
-- Arquivo `src/main/resources/messages.properties`:
+- Arquivo `src/main/resources/messages.properties` (talvez seja necessário salvar como messages_en_US.properties):
 
 ```properties
 welcome.text = Hi. Welcome to Everyone.
