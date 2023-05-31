@@ -12,16 +12,16 @@ Exemplo verificado no seguinte ambiente:
 - Apache Maven 3.6.3
 <hr>
 
-1. Abrir um terminal e digitar:
+1. Abrir um terminal que tenha instalado `openssl` e digitar:
 
 ```sh
-telnet www.saocarlos.sp.gov.br 80
-...
+openssl s_client -connect dlucredio.com:443
+... (vai aparecer as credenciais SSL)
 GET / HTTP/1.1
-Host: www.saocarlos.sp.gov.br
+Host: dlucredio.com
 (dar dois enters - não pode demorar muito)
 ...
-````
+```
 
 2. Criar um novo projeto Java no Apache Maven, chamado ```GatoTom```
 
