@@ -78,7 +78,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DemoDiController {
     Mensagem m = new Mensagem();
     
-    @GetMapping
+    @GetMapping("/")
     public String index(Model model) {
 
         model.addAttribute("mensagem", m);
