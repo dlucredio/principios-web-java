@@ -19,7 +19,7 @@ Exemplo verificado no seguinte ambiente:
 1. Criar um novo projeto Web: ```BolaoDaCopa1```
 
 ```sh
-mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.4
+mvn archetype:generate "-DarchetypeGroupId=org.apache.maven.archetypes" "-DarchetypeArtifactId=maven-archetype-webapp" "-DarchetypeVersion=1.4"
 
 Define value for property 'groupId': br.ufscar.dc.latosensu.web.bolao1
 Define value for property 'artifactId': BolaoDaCopa1
