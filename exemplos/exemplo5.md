@@ -21,7 +21,7 @@ Utilizando Apache Maven e Visual Studio Code.
 2. Criar um novo projeto usando o Apache Maven:
 
 ```sh
-mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.4
+mvn archetype:generate "-DarchetypeGroupId=org.apache.maven.archetypes" "-DarchetypeArtifactId=maven-archetype-webapp" "-DarchetypeVersion=1.4"
 
 Define value for property 'groupId': br.ufscar.dc.latosensu.web
 Define value for property 'artifactId': AplicacaoAloMundoMaven
