@@ -185,10 +185,10 @@ public class ProdutoController {
 8. Vai ser necessária uma classe `br.ufscar.dc.latosensu.web.demospringweb.ProdutoForm`:
 
 ```java
-package br.ufscaar.dc.latosensu.web.demospringweb;
+package br.ufscar.dc.latosensu.web.demospringweb;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 public class ProdutoForm {
     @NotBlank
