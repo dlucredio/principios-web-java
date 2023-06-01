@@ -22,7 +22,7 @@ Exemplo verificado no seguinte ambiente:
 	
 	- **Language:** Java
 	
-	- **Spring Boot:** 2.5.3
+	- **Spring Boot:** 3.1.0
 	
 	- **Group:** br.ufscar.dc.latosensu.web
 	
@@ -32,11 +32,11 @@ Exemplo verificado no seguinte ambiente:
 	
 	- **Description:** Bolão da copa 1 em Spring
 	
-	- **Package name:** br.ufscar.dc.latosensu.web
+	- **Package name:** br.ufscar.dc.latosensu.web.bolaodacopa1spring
 	
 	- **Packaging:** Jar
 	
-	- **Java:** 16
+	- **Java:** 20
 	
 	  **Dependências:** Spring Web, Thymeleaf, Spring Boot DevTools, JDBC API, Validation
 
