@@ -103,6 +103,7 @@ public class RequestsController {
 +        <dependency>
 +            <groupId>org.springframework.boot</groupId>
 +            <artifactId>spring-boot-starter-validation</artifactId>
++            <version>3.1.0</version>
 +        </dependency>
 
     </dependencies>
