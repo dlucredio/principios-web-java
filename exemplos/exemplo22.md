@@ -96,21 +96,18 @@ package br.ufscar.dc.latosensu.web.demospringweb;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import jakarta.annotation.Resource;
+
 @Controller
 public class DemoDiController {
 
-    @Resource            
+    @Resource
     private Map<String, Mensagem> mensagensPadrao;
-    // @Autowired não é recomendado para tipos que não são "nossos"
-    // como no caso Map, que é um tipo Java
-    // @Resource vai buscar pelo nome primeiro
 
     @Autowired
     Mensagem mensagemErro;
@@ -118,11 +115,11 @@ public class DemoDiController {
     @Autowired
     Mensagem mensagemSucesso;
 
-    @GetMapping
+    @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("mensagem", mensagensPadrao.get("sucesso"));
-        //model.addAttribute("mensagem", mensagemErro)
-        //model.addAttribute("mensagem", mensagemSucesso)
+        //model.addAttribute("mensagem", mensagemErro);
+        //model.addAttribute("mensagem", mensagemSucesso);
         return "index";
     }
 }
