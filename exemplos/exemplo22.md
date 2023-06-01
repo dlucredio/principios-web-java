@@ -132,9 +132,9 @@ package br.ufscar.dc.latosensu.web.demospringweb;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.springframework.stereotype.Component;
+
+import jakarta.annotation.Resource;
 
 @Component
 public class Resposta {
