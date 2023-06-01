@@ -529,8 +529,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 
 @Documented
 @Target(ElementType.FIELD)
@@ -554,8 +554,8 @@ package br.ufscar.dc.latosensu.web.bolaodacopa1spring.forms.validators;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class FormatoDataValidator implements ConstraintValidator<FormatoData, String> {
     public boolean isValid(String data, ConstraintValidatorContext context) {
@@ -580,13 +580,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 
 @Documented
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = {CampeaoEViceDiferentesValidator.class})
+@Constraint(validatedBy = { CampeaoEViceDiferentesValidator.class })
 public @interface CampeaoEViceDiferentes {
 
     String message() default "Campeão e vice devem ser diferentes";
@@ -602,12 +602,12 @@ public @interface CampeaoEViceDiferentes {
 ```java
 package br.ufscar.dc.latosensu.web.bolaodacopa1spring.forms.validators;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
 import br.ufscar.dc.latosensu.web.bolaodacopa1spring.forms.NovoPalpiteFormBean;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
-public class CampeaoEViceDiferentesValidator implements ConstraintValidator<CampeaoEViceDiferentes, NovoPalpiteFormBean> {
+public class CampeaoEViceDiferentesValidator
+        implements ConstraintValidator<CampeaoEViceDiferentes, NovoPalpiteFormBean> {
     public boolean isValid(NovoPalpiteFormBean npfb, ConstraintValidatorContext context) {
         return !npfb.getCampeao().equals(npfb.getVice());
     }
@@ -624,10 +624,10 @@ public class CampeaoEViceDiferentesValidator implements ConstraintValidator<Camp
 -import java.text.SimpleDateFormat;
 -import java.util.ArrayList;
 -import java.util.List;
-+import javax.validation.constraints.Email;
-+import javax.validation.constraints.NotNull;
-+import javax.validation.constraints.Pattern;
-+import javax.validation.constraints.Size;
++import jakarta.validation.constraints.Email;
++import jakarta.validation.constraints.NotNull;
++import jakarta.validation.constraints.Pattern;
++import jakarta.validation.constraints.Size;
 
 +import br.ufscar.dc.latosensu.web.bolaodacopa1spring.forms.validators.CampeaoEViceDiferentes;
 +import br.ufscar.dc.latosensu.web.bolaodacopa1spring.forms.validators.FormatoData;
