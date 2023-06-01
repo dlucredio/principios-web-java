@@ -427,7 +427,7 @@ public class TesteControlador {
     @Autowired
     UsuarioDAO usuarioDAO;
 
-    @GetMapping
+    @GetMapping("/")
     public String teste(Model model) {
         Usuario u;
         try {
