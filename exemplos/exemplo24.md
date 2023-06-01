@@ -93,7 +93,7 @@ Exemplo verificado no seguinte ambiente:
     </dependencies>
 ```
 
-4. Adicionar as propriedades de conexão ao arquivo `src/main/application.properties`:
+4. Adicionar as propriedades de conexão ao arquivo `src/main/resources/application.properties`:
 
 ```properties
 spring.datasource.driver-class-name=org.apache.derby.jdbc.ClientDriver
