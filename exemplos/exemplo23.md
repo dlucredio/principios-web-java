@@ -230,30 +230,32 @@ public class ProdutoForm {
 ```html
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Produtos</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
+
 <body>
     <h1>Produtos</h1>
-    <span th:text="${mensagem}">Mensagem</span><br/>
+    <span th:text="${mensagem}">Mensagem</span><br />
 
-    Opções: <br/>
-    <a href="@{/produto/encontrar/15}">Buscar o livro 15</a><br/>
+    Opções: <br />
+    <a th:href="@{/produto/encontrar/15}">Buscar o livro 15</a><br />
 
-    <br/>
-    Buscar pelo nome:<br/>
-    <form action="@{/produto/buscarProduto}" method="post">
+    <br />
+    Buscar pelo nome:<br />
+    <form th:action="@{/produto/buscarProduto}" method="post">
         Nome: <input type="text" name="nome" />
         <input type="submit" value="Buscar" />
     </form>
 
-    <br/>
+    <br />
 
-    Buscar pela categoria:<br/>
-    <form action="@{/produto/buscarProdutosPorCategoria}" method="get">
+    Buscar pela categoria:<br />
+    <form th:action="@{/produto/buscarProdutosPorCategoria}" method="get">
         Escolha:
         <select name="categoria">
             <option th:each="c:${categorias}" th:value="${c}" th:text="${c}">Categoria</option>
@@ -261,23 +263,24 @@ public class ProdutoForm {
         <input type="submit" value="Buscar" />
     </form>
 
-    <br/>
-    Cadastrar novo produto:<br/>
+    <br />
+    Cadastrar novo produto:<br />
     <form action="#" th:action="@{/produto/cadastrarProduto}" th:object="${produtoForm}" method="post">
-        Id: <input type="text" th:field="*{id}" id="id"> 
+        Id: <input type="text" th:field="*{id}" id="id">
         <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
-        <br/>
+        <br />
         Nome: <input type="text" th:field="*{nome}" id="nome">
         <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-        <br/>
+        <br />
         Categoria:
         <select th:field="*{categoria}" id="categoria">
             <option th:each="c:${categorias}" th:value="${c}" th:text="${c}">Categoria</option>
-        </select><br/>
+        </select><br />
         <input type="submit" value="Cadastrar" />
     </form>
 
 </body>
+
 </html>
 ```
 
