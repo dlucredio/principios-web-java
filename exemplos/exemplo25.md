@@ -21,7 +21,7 @@ Exemplo verificado no seguinte ambiente:
 	
 	- **Language:** Java
 	
-	- **Spring Boot:** 2.5.3
+	- **Spring Boot:** 3.1.0
 	
 	- **Group:** br.ufscar.dc.latosensu.web
 	
@@ -31,11 +31,11 @@ Exemplo verificado no seguinte ambiente:
 	
 	- **Description:** Bolão da copa 2
 	
-	- **Package name:** br.ufscar.dc.latosensu.web
+	- **Package name:** br.ufscar.dc.latosensu.web.bolaodacopa2
 	
 	- **Packaging:** Jar
 	
-	- **Java:** 16
+	- **Java:** 20
 	
 	  **Dependências:** Spring Web, Thymeleaf, Spring Boot DevTools, Validation, H2, JPA
 
@@ -66,10 +66,10 @@ package br.ufscar.dc.latosensu.web.bolaodacopa2.entidades;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Usuario {
@@ -396,7 +396,7 @@ body.text-center {
 - Exercício 1: Observe que os links são definidos com `th:href` ou `th:action` ao invés de `a:href` ou `action`, como em HTML simples. Por que?
 - Exercício 2: Para que serve a tag `th:object` na definição do formulário de login?
 - Exercício 3: Por que nos campos `th:field` do formulário, é utilizado o símbolo `*` ao invés de `$`, mais comum no ThymeLeaf?
-- Exercício 4: Essa página funciona corretamente se for aberta diretamente? Ou é necessário passar por um controlador Spring primeiro? Por que?
+- Exercício 4: Essa página funciona corretamente se for aberta diretamente? Ou é necessário passar por um controlador Spring primeiro? Por quê?
 - Exercício 5: Quando o usuário clicar em `Entrar`, o que acontece? Qual link será chamado?
 - Exercício 6: Quando o usuário clicar em `Registre-se aqui!`, o que acontece? Qual link será chamado?
 
@@ -539,9 +539,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -555,6 +552,7 @@ import br.ufscar.dc.latosensu.web.bolaodacopa2.entidades.Usuario;
 import br.ufscar.dc.latosensu.web.bolaodacopa2.forms.DadosLogin;
 import br.ufscar.dc.latosensu.web.bolaodacopa2.forms.NovoUsuario;
 import br.ufscar.dc.latosensu.web.bolaodacopa2.repositorios.RepositorioUsuario;
+import jakarta.validation.Valid;
 
 @Controller
 @SessionAttributes("usuarioLogado")
@@ -612,16 +610,15 @@ public class ControladorUsuario {
 ```java
 package br.ufscar.dc.latosensu.web.bolaodacopa2.forms;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+//import br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators.EmailNaoCadastrado;
+//import br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators.FormatoData;
+//import br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators.SenhaConfirmada;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
-import br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators.EmailNaoCadastrado;
-import br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators.FormatoData;
-import br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators.SenhaConfirmada;
-
-@SenhaConfirmada
+//@SenhaConfirmada
 public class NovoUsuario {
 
     @NotNull
@@ -631,7 +628,7 @@ public class NovoUsuario {
     @NotNull
     @Size(min = 5, max = 64, message = "Email deve possuir entre 5 e 64 caracteres")
     @Email(message = "Email está em formato incorreto")
-    @EmailNaoCadastrado
+//    @EmailNaoCadastrado
     private String email;
 
     @NotNull
@@ -643,7 +640,7 @@ public class NovoUsuario {
     @Pattern(regexp = "\\(\\d{2}\\) (\\d{5}|\\d{4})-\\d{4}", message = "O telefone deve estar no formato (xx) xxxxx-xxxx")
     private String telefone;
 
-    @FormatoData(message = "A data deve estar no formato dd/mm/aaaa")
+//    @FormatoData(message = "A data deve estar no formato dd/mm/aaaa")
     private String dataDeNascimento;
 
     public String getNome() {
@@ -704,44 +701,16 @@ public class NovoUsuario {
 
 13. Vamos criar agora todos os validadores utilizados no cadastro de usuários:
 
-- Classe `src/main/java/br/ufscar/dc/latosensu/web/bolaodacopa2/forms/validators/EmailNaoCadastrado.java`
-```java
-package br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-import javax.validation.Constraint;
-import javax.validation.Payload;
-
-@Documented
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = { EmailNaoCadastradoValidator.class })
-public @interface EmailNaoCadastrado {
-
-    String message() default "Este email já está cadastrado";
-
-    Class<?>[] groups() default {};
-
-    Class<? extends Payload>[] payload() default {};
-}
-```
-
 - Classe `src/main/java/br/ufscar/dc/latosensu/web/bolaodacopa2/forms/validators/EmailNaoCadastradoValidator.java`
 ```java
 package br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators;
-
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.ufscar.dc.latosensu.web.bolaodacopa2.entidades.Usuario;
 import br.ufscar.dc.latosensu.web.bolaodacopa2.repositorios.RepositorioUsuario;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class EmailNaoCadastradoValidator implements ConstraintValidator<EmailNaoCadastrado, String> {
     @Autowired
@@ -761,7 +730,7 @@ public class EmailNaoCadastradoValidator implements ConstraintValidator<EmailNao
 }
 ```
 
-- Classe `src/main/java/br/ufscar/dc/latosensu/web/bolaodacopa2/forms/validators/FormatoData.java`
+- Classe `src/main/java/br/ufscar/dc/latosensu/web/bolaodacopa2/forms/validators/EmailNaoCadastrado.java`
 ```java
 package br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators;
 
@@ -771,22 +740,23 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 
 @Documented
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = {FormatoDataValidator.class})
-public @interface FormatoData {
+@Constraint(validatedBy = { EmailNaoCadastradoValidator.class })
+public @interface EmailNaoCadastrado {
 
-    String message() default "Data deve seguir formato dd/mm/aaaa";
+    String message() default "Este email já está cadastrado";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 }
 ```
+
 
 - Classe `src/main/java/br/ufscar/dc/latosensu/web/bolaodacopa2/forms/validators/FormatoDataValidator.java`
 ```java
@@ -795,8 +765,8 @@ package br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class FormatoDataValidator implements ConstraintValidator<FormatoData, String> {
     public boolean isValid(String data, ConstraintValidatorContext context) {
@@ -814,7 +784,7 @@ public class FormatoDataValidator implements ConstraintValidator<FormatoData, St
 }
 ```
 
-- Classe `src/main/java/br/ufscar/dc/latosensu/web/bolaodacopa2/forms/validators/SenhaConfirmada.java`
+- Classe `src/main/java/br/ufscar/dc/latosensu/web/bolaodacopa2/forms/validators/FormatoData.java`
 ```java
 package br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators;
 
@@ -824,16 +794,16 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 
 @Documented
-@Target(ElementType.TYPE)
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = { SenhaConfirmadaValidator.class })
-public @interface SenhaConfirmada {
+@Constraint(validatedBy = {FormatoDataValidator.class})
+public @interface FormatoData {
 
-    String message() default "A confirmação da senha não corresponde à senha";
+    String message() default "Data deve seguir formato dd/mm/aaaa";
 
     Class<?>[] groups() default {};
 
@@ -841,14 +811,15 @@ public @interface SenhaConfirmada {
 }
 ```
 
+
+
 - Classe `src/main/java/br/ufscar/dc/latosensu/web/bolaodacopa2/forms/validators/SenhaConfirmadaValidator.java`
 ```java
 package br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
 import br.ufscar.dc.latosensu.web.bolaodacopa2.forms.NovoUsuario;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class SenhaConfirmadaValidator implements ConstraintValidator<SenhaConfirmada, NovoUsuario> {
     public boolean isValid(NovoUsuario nu, ConstraintValidatorContext context) {
@@ -863,6 +834,33 @@ public class SenhaConfirmadaValidator implements ConstraintValidator<SenhaConfir
         }
         return valido;   
     }
+}
+```
+
+- Classe `src/main/java/br/ufscar/dc/latosensu/web/bolaodacopa2/forms/validators/SenhaConfirmada.java`
+```java
+package br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+
+@Documented
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Constraint(validatedBy = { SenhaConfirmadaValidator.class })
+public @interface SenhaConfirmada {
+
+    String message() default "A confirmação da senha não corresponde à senha";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 }
 ```
 
@@ -1007,7 +1005,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties("bolao")
-public class Bolaodacopa2Config {
+public class BolaoDaCopa2Config {
     private List<String> selecoes = new ArrayList<>();
 
     public List<String> getSelecoes() {
@@ -1031,8 +1029,6 @@ package br.ufscar.dc.latosensu.web.bolaodacopa2.controladores;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -1043,18 +1039,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import br.ufscar.dc.latosensu.web.bolaodacopa2.Bolaodacopa2Config;
+import br.ufscar.dc.latosensu.web.bolaodacopa2.BolaoDaCopa2Config;
 import br.ufscar.dc.latosensu.web.bolaodacopa2.entidades.Palpite;
 import br.ufscar.dc.latosensu.web.bolaodacopa2.entidades.Usuario;
 import br.ufscar.dc.latosensu.web.bolaodacopa2.forms.NovoPalpite;
 import br.ufscar.dc.latosensu.web.bolaodacopa2.repositorios.RepositorioPalpite;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping(path = "/palpite")
 public class ControladorPalpite {
 
     @Autowired
-    Bolaodacopa2Config config;
+    BolaoDaCopa2Config config;
 
     @Autowired
     RepositorioPalpite repositorioPalpite;
@@ -1198,57 +1195,13 @@ public class ControladorPalpite {
 
 22. Vamos precisar (assim como no cadastro de usuário) de uma classe para o formulário/validação. Veja a seguir:
 
-- Classe `src/main/java/br/ufscar/dc/latosensu/web/bolaodacopa2/forms/validators/CampeaoEViceDiferentes.java`
-```java
-package br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-import javax.validation.Constraint;
-import javax.validation.Payload;
-
-@Documented
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = {CampeaoEViceDiferentesValidator.class})
-public @interface CampeaoEViceDiferentes {
-
-    String message() default "Campeão e vice devem ser diferentes";
-
-    Class<?>[] groups() default {};
-
-    Class<? extends Payload>[] payload() default {};
-}
-```
-
-- Classe `src/main/java/br/ufscar/dc/latosensu/web/bolaodacopa2/forms/validators/CampeaoEViceDiferentesValidator.java`
-```java
-package br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators;
-
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
-import br.ufscar.dc.latosensu.web.bolaodacopa2.forms.NovoPalpite;
-
-public class CampeaoEViceDiferentesValidator implements ConstraintValidator<CampeaoEViceDiferentes, NovoPalpite> {
-    public boolean isValid(NovoPalpite novoPalpite, ConstraintValidatorContext context) {
-        return !novoPalpite.getCampeao().equals(novoPalpite.getVice());
-    }
-}
-```
-
 - Classe `src/main/java/br/ufscar/dc/latosensu/web/bolaodacopa2/forms/NovoPalpite.java`:
 
 ```java
 package br.ufscar.dc.latosensu.web.bolaodacopa2.forms;
 
-import javax.validation.constraints.NotBlank;
-
 import br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators.CampeaoEViceDiferentes;
+import jakarta.validation.constraints.NotBlank;
 
 @CampeaoEViceDiferentes(message = "Campeão e vice devem ser diferentes")
 public class NovoPalpite {
@@ -1271,6 +1224,48 @@ public class NovoPalpite {
     public void setVice(String vice) {
         this.vice = vice;
     }
+}
+```
+
+- Classe `src/main/java/br/ufscar/dc/latosensu/web/bolaodacopa2/forms/validators/CampeaoEViceDiferentesValidator.java`
+```java
+package br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators;
+
+import br.ufscar.dc.latosensu.web.bolaodacopa2.forms.NovoPalpite;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+
+public class CampeaoEViceDiferentesValidator implements ConstraintValidator<CampeaoEViceDiferentes, NovoPalpite> {
+    public boolean isValid(NovoPalpite novoPalpite, ConstraintValidatorContext context) {
+        return !novoPalpite.getCampeao().equals(novoPalpite.getVice());
+    }
+}
+```
+
+- Classe `src/main/java/br/ufscar/dc/latosensu/web/bolaodacopa2/forms/validators/CampeaoEViceDiferentes.java`
+```java
+package br.ufscar.dc.latosensu.web.bolaodacopa2.forms.validators;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+
+@Documented
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Constraint(validatedBy = {CampeaoEViceDiferentesValidator.class})
+public @interface CampeaoEViceDiferentes {
+
+    String message() default "Campeão e vice devem ser diferentes";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 }
 ```
 
